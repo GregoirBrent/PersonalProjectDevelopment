@@ -1,13 +1,13 @@
 # PersonalProjectDevelopment
 
-##De klant:
+## De klant:
 
 
-##Core Project Statement:
+## Core Project Statement:
 
 
-##Deliverables:
+## Deliverables:
 
 
-##Blog:
+## Blog:
 
