@@ -4,19 +4,25 @@ Een persoonlijk project voor het laatste jaar Digital Design & Development (DEVI
 
 ## De klant:
 
-Een uitdagend project voor mezelf.
+Een uitdagend project waar ik mijn drie passies naar voor wil brengen. Deze drie passies zijn Muziek, Golf en Klussen.
 
 ## Core Project Statement:
 
-Heb je je overslapen maar toch even snel je agenda bekijken? Of eerder tijdens het handen wassen kijken hoelaat het is? De "Slimme Spiegel" is een spiegel waarop data wordt weergegeven zoals een klok, het weerbericht, agenda, etc. . Zo hoef je geen tijd te verliezen aan het zoeken naar de juiste applicatie wat je precies zoekt. Via een react (native) applicatie kan je je "slimme spiegel" customizen naar jouw wens. 
+
+MOBILE VS REALITY
+
+Een multiplayer arcade game waar je een potje minigolf tegen elkaar speelt. Wie de minste slagen heeft na drie holes wint. Hoe speel je nu tegen elkaar? Wel. Er zijn twee fysieke arcade bakken. De ene bak heeft visueel en fysieke knoppen. De andere bak enkel een frame. Op dit frame wordt er via AR knoppen en het spel weergegeven. Zo ontstaat er een spel tussen oud en nieuw. Waarbij je op twee verschillende manieren hetzelfde spel kan ervaren. En dat nog eens in een competitieve vorm.
 
 ### Onderzoeksvraag:
-Is een “Slimme spiegel” een snelle en veiligere manier om naar je klok, agenda, weerbericht of etc. te kijken tijdens het klaarmaken?
+
+Is er een manier om een combinatie van het "oude gamen" te combineren met het nieuwe?
 
 ## Deliverables:
 
-* React (native) applicatie
-* Slimme spiegel (Via een monitor en een Raspberry PI)
+* Arduino
+* AR (ARKit IOS & ARCore Android)
+* Unity
+* Multiplayer
 
 ## Blog:
 
