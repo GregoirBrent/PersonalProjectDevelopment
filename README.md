@@ -8,21 +8,20 @@ Een uitdagend project waar ik mijn drie passies naar voor wil brengen. Deze drie
 
 ## Core Project Statement:
 
-
 MOBILE VS REALITY
 
 Een multiplayer arcade game waar je een potje minigolf tegen elkaar speelt. Wie de minste slagen heeft na drie holes wint. Hoe speel je nu tegen elkaar? Wel. Er zijn twee fysieke arcade bakken. De ene bak heeft visueel en fysieke knoppen. De andere bak enkel een frame. Op dit frame wordt er via AR knoppen en het spel weergegeven. Zo ontstaat er een spel tussen oud en nieuw. Waarbij je op twee verschillende manieren hetzelfde spel kan ervaren. En dat nog eens in een competitieve vorm.
 
 ### Onderzoeksvraag:
 
-Is er een manier om een combinatie van het "oude gamen" te combineren met het nieuwe?
+Hoe kan ik een combinatie van het "oude gamen" combineren met het nieuwe?
 
 ## Deliverables:
 
-* Arduino
-* AR (ARKit IOS & ARCore Android)
-* Unity
-* Multiplayer
+- Arduino
+- AR (ARKit IOS & ARCore Android)
+- Unity
+- Multiplayer
 
 ## Blog:
 
