@@ -12,9 +12,12 @@ public class StrokeManager : MonoBehaviour
 
 
     public float StrokeAngle { get; protected set; }
+    public float StrokeForce { get; protected set; }
 
+    public enum StrokeModeEnum {READY_TO_HIT, BALL_IS_ROLLING };
+    public StrokeModeEnum StrokeMode { get; protected set; }
 
-	Rigidbody playerBallRB;
+    Rigidbody playerBallRB;
     bool doWhack = false;
     
     //Update is called once per visual frame -- use this for inputs
@@ -51,17 +54,36 @@ public class StrokeManager : MonoBehaviour
         }
     }
 
+
+    void updateStrokeMode()
+    {
+        //is de bal nog steeds aan het rollen?
+        if(playerBallRB.IsSleeping())
+        {
+            StrokeMode = StrokeModeEnum.READY_TO_HIT;
+        }
+    }
+
+
     // Runs on every tick of the physics, manipulation things :)
 
     void FixedUpdate()
     {
 
-        if(playerBallRB == null)
+        if (playerBallRB == null)
         {
             //Mag geen error zijn, Kan zijn als de ball out of bounce is, of gedelete, ...
             //Is nog niet gerespawned
             return;
         }
+
+        if (StrokeMode == StrokeModeEnum.BALL_IS_ROLLING)
+        {
+            //Niks mogen doen, Wachten tot bal terug stil ligt
+            updateStrokeMode();
+            return;
+        }
+
 
         if (doWhack)
         {
@@ -73,6 +95,8 @@ public class StrokeManager : MonoBehaviour
             Vector3 forceVec = new Vector3(0, 0, 1.3f);
 
             playerBallRB.AddForce(Quaternion.Euler(0, StrokeAngle, 0) * forceVec, ForceMode.Impulse);
+
+            StrokeMode = StrokeModeEnum.BALL_IS_ROLLING;
 		}
         
     }
