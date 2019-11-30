@@ -1,17 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO.Ports;
 
 public class StrokeManager : MonoBehaviour
 {
-   
+
+    //private float amountToMove;
+    int Arduino = 0;
+    SerialPort sp = new SerialPort("/dev/cu.usbmodem14201", 9600);
+
     void Start()
     {
+        sp.Open();
+        sp.ReadTimeout = 1;
+
         FindPlayerBall();
     }
 
 
     public float StrokeAngle { get; protected set; }
+    public float XA { get; protected set; }
+    public float YA { get; protected set; }
     public float StrokeForce { get; protected set; }
 
     public enum StrokeModeEnum {READY_TO_HIT, BALL_IS_ROLLING };
@@ -25,14 +35,70 @@ public class StrokeManager : MonoBehaviour
     private void Update()
     {
 
-        
-        if (Input.GetKeyUp(KeyCode.Space))
+
+        //amountToMove = StrokeForce * Time.deltaTime;
+
+        if (sp.IsOpen)
         {
-            doWhack = true;
+            try
+            {
+                MoveObject(sp.ReadByte());
+
+            }
+            catch (System.Exception)
+            {
+                return;
+            }
         }
 
-        StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
-            
+        //if (Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    doWhack = true;
+        //}
+
+        //StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
+
+        //if (Arduino == 2)
+        //{
+        //    XA += -Input.GetAxis("Horizontal") * 1f;
+        //    StrokeAngle += -1f;
+        //    YA += -Input.GetAxis("Vertical") * 1f;
+        //}
+
+        //if (Arduino == 3)
+        //{
+        //    XA += Input.GetAxis("Horizontal") * 1f;
+        //    StrokeAngle += 1f;
+        //    YA += Input.GetAxis("Vertical") * 1f;
+        //}
+    }
+
+    void MoveObject(int Direction)
+    {
+        if(Direction == 1)
+        {
+            doWhack = true;
+            Arduino = 1;
+        }
+
+  
+        if (Direction == 2)
+        {
+            Arduino = 2;
+            XA += -Input.GetAxis("Horizontal") * 1f;
+            StrokeAngle += -1f;
+            YA += -Input.GetAxis("Vertical") * 1f;
+
+        }
+
+        if (Direction == 3)
+        {
+            Arduino = 3;
+            XA += Input.GetAxis("Horizontal") * 1f;
+            StrokeAngle += 1f;
+            YA += Input.GetAxis("Vertical") * 1f;
+        }
+
     }
 
 
@@ -77,7 +143,7 @@ public class StrokeManager : MonoBehaviour
             return;
         }
 
-        if (StrokeMode == StrokeModeEnum.BALL_IS_ROLLING)
+        if (StrokeMode != StrokeModeEnum.READY_TO_HIT)
         {
             //Niks mogen doen, Wachten tot bal terug stil ligt
             updateStrokeMode();
@@ -90,14 +156,14 @@ public class StrokeManager : MonoBehaviour
             doWhack = false;
         }
 
-        if ( Input.GetKeyUp(KeyCode.Space))
+        if ( Arduino == 1)
 		{
-            Vector3 forceVec = new Vector3(0, 0, 1.3f);
+            Vector3 forceVec = new Vector3(0, 0, 2f);
 
-            playerBallRB.AddForce(Quaternion.Euler(0, StrokeAngle, 0) * forceVec, ForceMode.Impulse);
+            playerBallRB.AddForce(Quaternion.Euler(XA, StrokeAngle, YA) * forceVec, ForceMode.Impulse);
 
             StrokeMode = StrokeModeEnum.BALL_IS_ROLLING;
 		}
-        
+
     }
 }
