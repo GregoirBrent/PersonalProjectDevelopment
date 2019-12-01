@@ -16,6 +16,7 @@ public class StrokeManager : MonoBehaviour
         sp.ReadTimeout = 1;
 
         FindPlayerBall();
+        StrokeCount = 1;
     }
 
 
@@ -24,11 +25,24 @@ public class StrokeManager : MonoBehaviour
     public float YA { get; protected set; }
     public float StrokeForce { get; protected set; }
 
-    public enum StrokeModeEnum {READY_TO_HIT, BALL_IS_ROLLING };
+    public int StrokeCount { get; protected set; }
+
+
+    public float StrokeForcePerc { get { return StrokeForce / MaxStrokeForce; }}
+
+    float strokeForceFillSpeed = 5f;
+    int fillDir = 1;
+
+
+    float MaxStrokeForce = 10f;
+
+    public enum StrokeModeEnum {AIMING, FILLING, READY_TO_HIT, BALL_IS_ROLLING };
     public StrokeModeEnum StrokeMode { get; protected set; }
 
     Rigidbody playerBallRB;
-    bool doWhack = false;
+
+    //bool doWhack = false;
+    bool doFill = false;
     
     //Update is called once per visual frame -- use this for inputs
 
@@ -49,6 +63,25 @@ public class StrokeManager : MonoBehaviour
             {
                 return;
             }
+
+        }
+
+        if (StrokeMode == StrokeModeEnum.AIMING)
+        {
+            if (Arduino == 2)
+            {
+                XA += -Input.GetAxis("Horizontal") * 1f;
+                StrokeAngle += -1f;
+                YA += -Input.GetAxis("Vertical") * 1f;
+            }
+
+            if (Arduino == 3)
+            {
+                XA += Input.GetAxis("Horizontal") * 1f;
+                StrokeAngle += 1f;
+                YA += Input.GetAxis("Vertical") * 1f;
+            }
+
         }
 
         //if (Input.GetKeyUp(KeyCode.Space))
@@ -58,45 +91,49 @@ public class StrokeManager : MonoBehaviour
 
         //StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
 
-        //if (Arduino == 2)
-        //{
-        //    XA += -Input.GetAxis("Horizontal") * 1f;
-        //    StrokeAngle += -1f;
-        //    YA += -Input.GetAxis("Vertical") * 1f;
-        //}
+        if(StrokeMode == StrokeModeEnum.FILLING && Arduino == 1)
+        {
+            StrokeForce += (strokeForceFillSpeed * fillDir) * Time.deltaTime;
 
-        //if (Arduino == 3)
-        //{
-        //    XA += Input.GetAxis("Horizontal") * 1f;
-        //    StrokeAngle += 1f;
-        //    YA += Input.GetAxis("Vertical") * 1f;
-        //}
+            if(StrokeForce > MaxStrokeForce) {
+
+                StrokeForce = MaxStrokeForce;
+                fillDir = -1;
+            }
+            else if (StrokeForce < 0)
+            {
+                StrokeForce = 0;
+                fillDir = 1;
+            }
+        }
     }
 
     void MoveObject(int Direction)
     {
         if(Direction == 1)
         {
-            doWhack = true;
+            //doWhack = true;
             Arduino = 1;
+            StrokeMode = StrokeModeEnum.READY_TO_HIT;
+            return;
         }
 
   
         if (Direction == 2)
         {
             Arduino = 2;
-            XA += -Input.GetAxis("Horizontal") * 1f;
-            StrokeAngle += -1f;
-            YA += -Input.GetAxis("Vertical") * 1f;
+            //XA += -Input.GetAxis("Horizontal") * 1f;
+            //StrokeAngle += -1f;
+            //YA += -Input.GetAxis("Vertical") * 1f;
 
         }
 
         if (Direction == 3)
         {
             Arduino = 3;
-            XA += Input.GetAxis("Horizontal") * 1f;
-            StrokeAngle += 1f;
-            YA += Input.GetAxis("Vertical") * 1f;
+            //XA += Input.GetAxis("Horizontal") * 1f;
+            //StrokeAngle += 1f;
+            //YA += Input.GetAxis("Vertical") * 1f;
         }
 
     }
@@ -121,12 +158,13 @@ public class StrokeManager : MonoBehaviour
     }
 
 
-    void updateStrokeMode()
+    void CheckRollingStatus()
     {
         //is de bal nog steeds aan het rollen?
-        if(playerBallRB.IsSleeping())
+        if (playerBallRB.IsSleeping())
         {
-            StrokeMode = StrokeModeEnum.READY_TO_HIT;
+            StrokeCount++; //TO DO: Tot we ebben gescoord;
+            StrokeMode = StrokeModeEnum.AIMING;
         }
     }
 
@@ -143,27 +181,38 @@ public class StrokeManager : MonoBehaviour
             return;
         }
 
+        if (StrokeMode == StrokeModeEnum.BALL_IS_ROLLING)
+        {
+            CheckRollingStatus();
+            return;
+        }
+
         if (StrokeMode != StrokeModeEnum.READY_TO_HIT)
         {
             //Niks mogen doen, Wachten tot bal terug stil ligt
-            updateStrokeMode();
+            //updateStrokeMode();
             return;
         }
 
 
-        if (doWhack)
-        {
-            doWhack = false;
-        }
+        Vector3 forceVec = new Vector3(0, 0, 5f);
 
-        if ( Arduino == 1)
-		{
-            Vector3 forceVec = new Vector3(0, 0, 2f);
+        playerBallRB.AddForce(Quaternion.Euler(XA, StrokeAngle, YA) * forceVec, ForceMode.Impulse);
 
-            playerBallRB.AddForce(Quaternion.Euler(XA, StrokeAngle, YA) * forceVec, ForceMode.Impulse);
+        StrokeForce = 0;
+        fillDir = 1;
+        StrokeMode = StrokeModeEnum.BALL_IS_ROLLING;
 
-            StrokeMode = StrokeModeEnum.BALL_IS_ROLLING;
-		}
+        //if (Arduino == 1)
+        //{
+        //    Vector3 forceVec = new Vector3(0, 0, 5f);
+
+        //    playerBallRB.AddForce(Quaternion.Euler(XA, StrokeAngle, YA) * forceVec, ForceMode.Impulse);
+
+        //    StrokeForce = 0;
+        //    fillDir = 1;
+        //    StrokeMode = StrokeModeEnum.BALL_IS_ROLLING;
+        //}
 
     }
 }
