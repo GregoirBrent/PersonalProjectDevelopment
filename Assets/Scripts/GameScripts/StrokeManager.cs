@@ -13,6 +13,7 @@ public class StrokeManager : MonoBehaviour
 
         FindPlayerBall();
         StrokeCount = 0;
+        Arrow = GameObject.FindGameObjectWithTag("Arrow");
     }
 
     //SerialPort sp = new SerialPort("/dev/cu.usbmodem14201", 9600);
@@ -32,6 +33,8 @@ public class StrokeManager : MonoBehaviour
     public float StrokeForcePerc { get { return StrokeForce / MaxStrokeForce; } }
 
     Rigidbody playerBallRB;
+
+    public GameObject Arrow;
 
     private void FindPlayerBall()
 	{
@@ -114,7 +117,7 @@ public class StrokeManager : MonoBehaviour
 
             if (Input.GetButtonUp("Fire1"))
             {
-                //GameObject.FindGameObjectWithTag("arrow").SetActive(false);
+                Arrow.SetActive(false);
                 StrokeMode = StrokeModeEnum.DO_HIT;
             }
         }
@@ -126,10 +129,11 @@ public class StrokeManager : MonoBehaviour
         //is de bal nog aan het rollen?
         if (playerBallRB.IsSleeping())
         {
-            //StrokeCount++;
-            //GameObject.FindGameObjectWithTag("arrow").SetActive(false);
+            Arrow.SetActive(true);
             StrokeMode = StrokeModeEnum.AIMING;
         }
+
+        //Debug.Log(playerBallRB.IsSleeping());
     }
 
 
