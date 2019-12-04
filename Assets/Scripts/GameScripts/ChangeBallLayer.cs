@@ -7,11 +7,14 @@ public class ChangeBallLayer : MonoBehaviour
     public int LayerOnEnter; //Ball gaat in de Hole
     public int LayerOnExit; // Ball op grasmat
 
+    
+
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             other.gameObject.layer = LayerOnEnter;
+
         }
     }
 

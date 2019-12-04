@@ -7,12 +7,15 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnLevel(); 
+        SpawnLevel();
+        //Debug.Log(Levels.Length);
     }
 
     public GameObject[] Levels;
     int levelIndex;
     GameObject currLevel;
+
+    
 
     void DespawnLevel()
     {
@@ -21,7 +24,9 @@ public class LevelManager : MonoBehaviour
 
     void SpawnLevel()
     {
+        //Debug.Log(levelIndex);
         currLevel = GameObject.Instantiate(Levels[levelIndex]);
+        //Debug.Log(currLevel);
     }
 
     public void LevelComplete()

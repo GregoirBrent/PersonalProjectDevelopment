@@ -27,6 +27,7 @@ public class StrokeManager : MonoBehaviour
     int fillDir = 1;
     float MaxStrokeForce = 10f;
 
+
     public enum StrokeModeEnum { AIMING, FILLING, DO_HIT, BALL_IS_ROLLING };
     public StrokeModeEnum StrokeMode { get; protected set; }
 
@@ -35,6 +36,7 @@ public class StrokeManager : MonoBehaviour
     Rigidbody playerBallRB;
 
     public GameObject Arrow;
+
 
     private void FindPlayerBall()
 	{
