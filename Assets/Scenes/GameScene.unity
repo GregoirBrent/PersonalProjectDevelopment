@@ -179,7 +179,6 @@ GameObject:
   - component: {fileID: 190503410}
   - component: {fileID: 190503415}
   - component: {fileID: 190503416}
-  - component: {fileID: 190503417}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Player
@@ -196,8 +195,8 @@ Rigidbody:
   m_GameObject: {fileID: 190503409}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.5
-  m_AngularDrag: 0.5
+  m_Drag: 0.85
+  m_AngularDrag: 0.85
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -210,7 +209,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190503409}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4719f4d254ca240fe8b24c1674d04bc8, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -298,18 +297,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c77a932ea1c064715a399fc1becec370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &190503417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190503409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e61038123220846b197c6abcd7bb47f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &382768754
@@ -511,7 +498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ball: {fileID: 190503414}
   turnSpeed: 4
-  pivot: {fileID: 1459924476}
+  height: 1
+  distance: 2
 --- !u!1 &582278637
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - {fileID: 4423329200450765125, guid: fe51a33497c9c416486956d174930d7f, type: 3}
+  - {fileID: 984793380947851113, guid: 020e253d78cd746dd8c6e91f2a9a4526, type: 3}
   - {fileID: 3567891311216862827, guid: d19850bdb4a51486d990cfaad878dc1d, type: 3}
 --- !u!4 &1025367673
 Transform:
@@ -795,6 +783,7 @@ GameObject:
   - component: {fileID: 1209888218}
   - component: {fileID: 1209888217}
   - component: {fileID: 1209888216}
+  - component: {fileID: 1209888220}
   m_Layer: 0
   m_Name: GrassGround
   m_TagString: Untagged
@@ -809,7 +798,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209888215}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 74522cd98b3874b0fa3aa8973872749c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -876,6 +865,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1209888220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209888215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cd88ac02a3a845d389dce9460d60deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ball: {fileID: 190503414}
 --- !u!1 &1236458257
 GameObject:
   m_ObjectHideFlags: 0

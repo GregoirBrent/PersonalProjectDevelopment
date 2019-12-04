@@ -6,11 +6,14 @@ public class Respawn : MonoBehaviour
 {
 
     [SerializeField]private Transform Ball;
-    [SerializeField] private Transform RespawnPoint;
+
+    SpawnPoint SpawnPoint;
 
     private void OnTriggerEnter(Collider other)
     {
-        Ball.transform.position = RespawnPoint.transform.position;
+        SpawnPoint.GetComponent<SpawnPoint>();
+        SpawnPoint.Spawn();
+        
 
         //Get player rigidbody component
         Rigidbody BallRB = Ball.GetComponent<Rigidbody>();

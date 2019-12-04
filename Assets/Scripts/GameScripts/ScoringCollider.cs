@@ -6,6 +6,7 @@ public class ScoringCollider : MonoBehaviour
 {
     LevelManager LevelManager;
     Ball Ball;
+  
 
     void Start()
     {
@@ -24,9 +25,13 @@ public class ScoringCollider : MonoBehaviour
         LevelManager.LevelComplete();
 
         Ball = GameObject.FindObjectOfType<Ball>();
-        //Ball.GetComponent<LayerMask>();
         Ball.gameObject.layer = LayerMask.NameToLayer("Default");
         Ball.GetComponent<SetPosition>().RespawnBall();
+
+        //Rigidbody BallRB = Ball.GetComponent<Rigidbody>();
+        ////zet angularVelocity en velocity to 0
+        //BallRB.angularVelocity = Vector3.zero;
+        //BallRB.velocity = Vector3.zero;
 
     }
 }
