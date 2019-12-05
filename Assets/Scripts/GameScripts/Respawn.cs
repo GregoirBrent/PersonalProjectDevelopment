@@ -11,10 +11,6 @@ public class Respawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SpawnPoint.GetComponent<SpawnPoint>();
-        SpawnPoint.Spawn();
-        
-
         //Get player rigidbody component
         Rigidbody BallRB = Ball.GetComponent<Rigidbody>();
 
@@ -22,7 +18,8 @@ public class Respawn : MonoBehaviour
         BallRB.angularVelocity = Vector3.zero;
         BallRB.velocity = Vector3.zero;
 
-        //Debug.Log(ballRB.angularVelocity = Vector3.zero);
-        //Debug.Log(ballRB.velocity = Vector3.zero);
+        SpawnPoint = GameObject.FindObjectOfType<SpawnPoint>();
+        SpawnPoint.Spawn();
+
     }
 }

@@ -9,11 +9,16 @@ public class NextLevel : MonoBehaviour
 
     void Start()
     {
+
+        NextHole();
+    }
+
+    void NextHole()
+    {
         LevelManager = GameObject.FindObjectOfType<LevelManager>();
         LevelManager.LevelComplete();
 
         ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
         ScoreWindow.deActiveScoreboard();
-
     }
 }

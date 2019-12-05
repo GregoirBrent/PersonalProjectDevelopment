@@ -56,12 +56,12 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    //public void ChangeScore(string username, string scoreType, int amount)
-    //{
-    //    Init();
-    //    int currScore = GetScore(username, scoreType);
-    //    SetScore(username, scoreType, currScore + amount);
-    //}
+    public void ChangeScore(string username, string scoreType, int amount)
+    {
+        Init();
+        int currScore = GetScore(username, scoreType);
+        SetScore(username, scoreType, currScore + amount);
+    }
 
     public string[] GetPlayerNames()
     {

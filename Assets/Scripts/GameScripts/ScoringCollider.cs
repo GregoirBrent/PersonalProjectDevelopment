@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ScoringCollider : MonoBehaviour
 {
-    //LevelManager LevelManager;
+    LevelManager LevelManager;
     Ball Ball;
-    ScoreWindow ScoreWindow;
+    //ScoreWindow ScoreWindow;
 
     void Start()
     {
@@ -30,9 +30,10 @@ public class ScoringCollider : MonoBehaviour
         BallRB.angularVelocity = Vector3.zero;
         BallRB.velocity = Vector3.zero;
 
-        //LevelManager = GameObject.FindObjectOfType<LevelManager>();
-        //LevelManager.LevelComplete();
-        ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
-        ScoreWindow.activeScoreboard();
+        LevelManager = GameObject.FindObjectOfType<LevelManager>();
+        LevelManager.LevelComplete();
+
+        //ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
+        //ScoreWindow.activeScoreboard();
     }
 }

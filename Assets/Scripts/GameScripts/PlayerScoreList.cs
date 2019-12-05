@@ -23,7 +23,7 @@ public class PlayerScoreList : MonoBehaviour
             Debug.Log("Geen scoremanager gevonden");
         }
 
-        while(this.transform.childCount > 0)
+        while (this.transform.childCount > 0)
         {
             Transform c = this.transform.GetChild(0);
             c.SetParent(null);
