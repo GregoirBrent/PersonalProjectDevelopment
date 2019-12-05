@@ -5,8 +5,8 @@ using UnityEngine;
 public class NextLevel : MonoBehaviour
 {
     LevelManager LevelManager;
-    ScoreWindow ScoreWindow;
-    //StrokeManager StrokeManager;
+    //ScoreWindow ScoreWindow;
+    StrokeManager StrokeManager;
 
     void Start()
     {
@@ -19,9 +19,12 @@ public class NextLevel : MonoBehaviour
         LevelManager = GameObject.FindObjectOfType<LevelManager>();
         LevelManager.LevelComplete();
 
-        ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
-        ScoreWindow.deActiveScoreboard();
+        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
+        StrokeManager.ResetScore();
 
-        
+        //ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
+        //ScoreWindow.deActiveScoreboard();
+
+
     }
 }

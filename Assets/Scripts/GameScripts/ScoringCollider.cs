@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ScoringCollider : MonoBehaviour
 {
-    LevelManager LevelManager;
+    //LevelManager LevelManager;
     Ball Ball;
-    StrokeManager StrokeManager;
-    //ScoreWindow ScoreWindow;
+    //StrokeManager StrokeManager;
+    ScoreWindow ScoreWindow;
 
     void Start()
     {
- 
+        ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
     }
 
     void Update()
@@ -21,8 +21,10 @@ public class ScoringCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("BALL IN HOLE! NICE DONE!!!");
-       
+        Debug.Log("BALL IN HOLE! NICE DONE!!!");
+
+        ScoreWindow.ActiveScoreboard();
+
         Ball = GameObject.FindObjectOfType<Ball>();
         Ball.gameObject.layer = LayerMask.NameToLayer("Default");
 
@@ -31,13 +33,11 @@ public class ScoringCollider : MonoBehaviour
         BallRB.angularVelocity = Vector3.zero;
         BallRB.velocity = Vector3.zero;
 
-        LevelManager = GameObject.FindObjectOfType<LevelManager>();
-        LevelManager.LevelComplete();
+        //LevelManager = GameObject.FindObjectOfType<LevelManager>();
+        //LevelManager.LevelComplete();
 
-        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
-        StrokeManager.ResetScore();
+        //StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
+        //StrokeManager.ResetScore();
 
-        //ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
-        //ScoreWindow.activeScoreboard();
     }
 }

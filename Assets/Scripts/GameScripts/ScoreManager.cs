@@ -9,10 +9,10 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        SetScore("Arduino", "stroke1", 3);
-        SetScore("Arduino", "stroke2", 5);
-        SetScore("Arduino", "stroke3", 10);
-        SetScore("Arduino", "total", 18);
+        //SetScore("Arduino", "stroke1", 3);
+        //SetScore("Arduino", "stroke2", 5);
+        //SetScore("Arduino", "stroke3", 10);
+        //SetScore("Arduino", "total", 18);
 
         //SetScore("Brent", "stroke1", 3);
         //SetScore("Brent", "stroke2", 5);
