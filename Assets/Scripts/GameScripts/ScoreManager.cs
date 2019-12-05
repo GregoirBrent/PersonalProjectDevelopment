@@ -14,11 +14,11 @@ public class ScoreManager : MonoBehaviour
         SetScore("Arduino", "stroke3", 10);
         SetScore("Arduino", "total", 18);
 
-        SetScore("Brent", "stroke1", 3);
-        SetScore("Brent", "stroke2", 5);
+        //SetScore("Brent", "stroke1", 3);
+        //SetScore("Brent", "stroke2", 5);
 
-        SetScore("Lotte", "stroke1", 10);
-        SetScore("Lotte", "stroke2", 18);
+        //SetScore("Lotte", "stroke1", 10);
+        //SetScore("Lotte", "stroke2", 18);
     }
 
     void Init()

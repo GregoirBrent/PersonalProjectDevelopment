@@ -12,8 +12,6 @@ public class PlayerScoreList : MonoBehaviour
     void Start()
     {
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
-
-  
     }
 
 
@@ -31,7 +29,7 @@ public class PlayerScoreList : MonoBehaviour
         {
             Transform c = this.transform.GetChild(0);
             c.SetParent(null);
-            //Destroy(c.gameObject);
+            Destroy(c.gameObject);
         }
 
         string[] names = scoreManager.GetPlayerNames();
