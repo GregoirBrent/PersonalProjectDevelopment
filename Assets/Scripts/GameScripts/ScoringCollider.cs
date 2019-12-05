@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ScoringCollider : MonoBehaviour
 {
-    LevelManager LevelManager;
+    //LevelManager LevelManager;
     Ball Ball;
-  
+    ScoreWindow ScoreWindow;
 
     void Start()
     {
@@ -21,17 +21,18 @@ public class ScoringCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("BALL IN HOLE! NICE DONE!!!");
-        LevelManager = GameObject.FindObjectOfType<LevelManager>();
-        LevelManager.LevelComplete();
-
+       
         Ball = GameObject.FindObjectOfType<Ball>();
         Ball.gameObject.layer = LayerMask.NameToLayer("Default");
-        Ball.GetComponent<SetPosition>().RespawnBall();
 
-        //Rigidbody BallRB = Ball.GetComponent<Rigidbody>();
-        ////zet angularVelocity en velocity to 0
-        //BallRB.angularVelocity = Vector3.zero;
-        //BallRB.velocity = Vector3.zero;
+        Rigidbody BallRB = Ball.GetComponent<Rigidbody>();
+        //zet angularVelocity en velocity to 0
+        BallRB.angularVelocity = Vector3.zero;
+        BallRB.velocity = Vector3.zero;
 
+        //LevelManager = GameObject.FindObjectOfType<LevelManager>();
+        //LevelManager.LevelComplete();
+        ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
+        ScoreWindow.activeScoreboard();
     }
 }
