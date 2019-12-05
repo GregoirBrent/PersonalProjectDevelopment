@@ -13,6 +13,12 @@ public class ScoreManager : MonoBehaviour
         SetScore("Arduino", "stroke2", 5);
         SetScore("Arduino", "stroke3", 10);
         SetScore("Arduino", "total", 18);
+
+        SetScore("Brent", "stroke1", 3);
+        SetScore("Brent", "stroke2", 5);
+
+        SetScore("Lotte", "stroke1", 10);
+        SetScore("Lotte", "stroke2", 18);
     }
 
     void Init()
@@ -56,12 +62,12 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    public void ChangeScore(string username, string scoreType, int amount)
-    {
-        Init();
-        int currScore = GetScore(username, scoreType);
-        SetScore(username, scoreType, currScore + amount);
-    }
+    //public void ChangeScore(string username, string scoreType, int amount)
+    //{
+    //    Init();
+    //    int currScore = GetScore(username, scoreType);
+    //    SetScore(username, scoreType, currScore + amount);
+    //}
 
     public string[] GetPlayerNames()
     {

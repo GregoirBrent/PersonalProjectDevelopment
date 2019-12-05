@@ -6,6 +6,7 @@ public class ScoringCollider : MonoBehaviour
 {
     LevelManager LevelManager;
     Ball Ball;
+    StrokeManager StrokeManager;
     //ScoreWindow ScoreWindow;
 
     void Start()
@@ -32,6 +33,9 @@ public class ScoringCollider : MonoBehaviour
 
         LevelManager = GameObject.FindObjectOfType<LevelManager>();
         LevelManager.LevelComplete();
+
+        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
+        StrokeManager.ResetScore();
 
         //ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
         //ScoreWindow.activeScoreboard();

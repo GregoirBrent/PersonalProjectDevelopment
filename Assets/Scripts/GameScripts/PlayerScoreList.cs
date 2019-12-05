@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerScoreList : MonoBehaviour
 {
-    public GameObject PlayerScoreListPrefab;
+    public GameObject playerScoreEntryPrefab;
 
     ScoreManager scoreManager;
 
@@ -13,28 +13,32 @@ public class PlayerScoreList : MonoBehaviour
     {
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
+  
     }
+
 
     
     void Update()
     {
+
         if (scoreManager == null)
         {
             Debug.Log("Geen scoremanager gevonden");
+            return;
         }
 
         while (this.transform.childCount > 0)
         {
             Transform c = this.transform.GetChild(0);
             c.SetParent(null);
-            Destroy(c.gameObject);
+            //Destroy(c.gameObject);
         }
 
         string[] names = scoreManager.GetPlayerNames();
 
         foreach (string name in names)
         {
-            GameObject go = (GameObject)Instantiate(PlayerScoreListPrefab);
+            GameObject go = (GameObject)Instantiate(playerScoreEntryPrefab);
             go.transform.SetParent(this.transform);
             go.transform.Find("Username").GetComponent<Text>().text = name;
             go.transform.Find("Number1").GetComponent<Text>().text = scoreManager.GetScore(name, "stroke1").ToString();

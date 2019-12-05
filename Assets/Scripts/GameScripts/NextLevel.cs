@@ -6,6 +6,7 @@ public class NextLevel : MonoBehaviour
 {
     LevelManager LevelManager;
     ScoreWindow ScoreWindow;
+    //StrokeManager StrokeManager;
 
     void Start()
     {
@@ -20,5 +21,7 @@ public class NextLevel : MonoBehaviour
 
         ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
         ScoreWindow.deActiveScoreboard();
+
+        
     }
 }

@@ -56,6 +56,11 @@ public class StrokeManager : MonoBehaviour
 	}
 
 
+    public void ResetScore()
+    {
+        StrokeCount = 0;
+    }
+
     private void Update() //Gebruiken voor visuele frames/inputs
     {
         //if (sp.IsOpen)
