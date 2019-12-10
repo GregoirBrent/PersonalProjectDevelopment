@@ -929,8 +929,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: RightButton
+      - m_Target: {fileID: 1533302756}
+        m_MethodName: ARRightButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1294,6 +1294,7 @@ GameObject:
   - component: {fileID: 1254953585}
   - component: {fileID: 1254953584}
   - component: {fileID: 1254953588}
+  - component: {fileID: 1254953589}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -1314,7 +1315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameModel: {fileID: 984793380296009840}
-  canvasButtons: {fileID: 1744553760}
 --- !u!114 &1254953585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,6 +1370,20 @@ MonoBehaviour:
   m_PlanePrefab: {fileID: 6821768147478430109, guid: 79df3ba5b238b45e0845889aa2c510c6,
     type: 3}
   m_DetectionMode: -1
+--- !u!114 &1254953589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254953583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointCloudPrefab: {fileID: 5657806839536102625, guid: 4dd3d69bf7038408294c3326ebe8f4ac,
+    type: 3}
 --- !u!1 &1280492288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,8 +1466,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LeftButton
+      - m_Target: {fileID: 1533302756}
+        m_MethodName: ARLeftButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1764,6 +1778,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arrow: {fileID: 0}
+  arHitIsPressed: 0
+  arLeftIsPressed: 0
+  arRightIsPressed: 0
 --- !u!4 &1533302757
 Transform:
   m_ObjectHideFlags: 0
@@ -1860,8 +1877,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: HitButton
+      - m_Target: {fileID: 1533302756}
+        m_MethodName: ARhitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2184,7 +2201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb5bfcd6b65a4f39a8f80e20df5721a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 8246042924279216106}
 --- !u!1 &984793380296009840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2443,7 +2460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd88ac02a3a845d389dce9460d60deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ball: {fileID: 0}
+  Ball: {fileID: 39422731}
 --- !u!23 &984793380867588800
 MeshRenderer:
   m_ObjectHideFlags: 0

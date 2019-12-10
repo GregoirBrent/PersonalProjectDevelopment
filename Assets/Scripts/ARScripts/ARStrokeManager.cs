@@ -52,6 +52,26 @@ public class ARStrokeManager : MonoBehaviour
         StrokeCount = 0;
     }
 
+    public bool arHitIsPressed = false;
+    public bool arLeftIsPressed = false;
+    public bool arRightIsPressed = false;
+
+    public void ARhitButton()
+    {
+        arHitIsPressed = true;
+    }
+
+    public void ARLeftButton()
+    {
+        arLeftIsPressed = true;
+    }
+
+    public void ARRightButton()
+    {
+        arRightIsPressed = true;
+    }
+
+
     private void Update() //Gebruiken voor visuele frames/inputs
     {
 
@@ -60,24 +80,25 @@ public class ARStrokeManager : MonoBehaviour
             StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
 
 
-            //if (arduinoMessage == "2")
-            //{
-            //    //Debug.Log("joystick +1");
-            //    StrokeAngle += 1 * 100f * Time.deltaTime;
-            //}
+            if (arRightIsPressed == true)
+            {
+                StrokeAngle += 1 * 100f * Time.deltaTime;
+                //arRightIsPressed = false;
+            }
 
-            //if (arduinoMessage == "3")
-            //{
-            //    //Debug.Log("joystick -1");
-            //    StrokeAngle -= 1 * 100f * Time.deltaTime;
-            //}
+            if (arLeftIsPressed == true)
+            {
+                StrokeAngle -= 1 * 100f * Time.deltaTime;
+                //arLeftIsPressed = false;
+            }
 
 
-            //if (arduinoMessage == "1")
-            if (Input.GetButtonUp("Fire1"))
+            if (arHitIsPressed == true)
+            //if (Input.GetButtonUp("Fire1"))
             {
                 Debug.Log("SET FORCE");
                 StrokeMode = StrokeModeEnum.FILLING;
+                arHitIsPressed = false;
                 return;
             }
         }
@@ -97,12 +118,13 @@ public class ARStrokeManager : MonoBehaviour
                 fillDir = 1;
             }
 
-            if (Input.GetButtonUp("Fire1"))
-            //if (arduinoMessage == "1")
+            //if (Input.GetButtonUp("Fire1"))
+            if (arHitIsPressed == true)
             {
                 Debug.Log("BAL HIT");
                 Arrow.SetActive(false);
                 StrokeMode = StrokeModeEnum.DO_HIT;
+                arHitIsPressed = false;
             }
         }
     }
