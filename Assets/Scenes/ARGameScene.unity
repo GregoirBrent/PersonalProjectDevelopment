@@ -717,7 +717,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 687621546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8bbb34d2238e43faa9fe72d877f28ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 947a62acf375d40a7af4af19e9f4e17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &687621549
@@ -1293,6 +1293,7 @@ GameObject:
   - component: {fileID: 1254953586}
   - component: {fileID: 1254953585}
   - component: {fileID: 1254953584}
+  - component: {fileID: 1254953588}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -1312,6 +1313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5984c4e521b3148c6ab0da7401550c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameModel: {fileID: 984793380296009840}
+  canvasButtons: {fileID: 1744553760}
 --- !u!114 &1254953585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1352,6 +1355,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254953588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254953583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlanePrefab: {fileID: 6821768147478430109, guid: 79df3ba5b238b45e0845889aa2c510c6,
+    type: 3}
+  m_DetectionMode: -1
 --- !u!1 &1280492288
 GameObject:
   m_ObjectHideFlags: 0
