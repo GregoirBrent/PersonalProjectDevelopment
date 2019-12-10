@@ -29,7 +29,7 @@ public class ScoreWindow : MonoBehaviour
     {
         Debug.Log("zichtbaar");
 
-        scoreBoard.SetActive(!scoreBoard.activeSelf);
+        //scoreBoard.SetActive(!scoreBoard.activeSelf);
 
         LevelManager.GetComponent<LevelManager>();
         //Debug.Log(LevelManager.Levels.Length);
@@ -47,8 +47,6 @@ public class ScoreWindow : MonoBehaviour
         }
 
 
-
-
         //ScoreManager.SetScore("Arduino", "total", StrokeManager.StrokeCount);
         //ScoreManager.SetScore("Arduino", "stroke3", StrokeManager.StrokeCount);
     }
@@ -56,9 +54,6 @@ public class ScoreWindow : MonoBehaviour
     //public void deActiveScoreboard()
     //{
     //    Debug.Log("Niet zichtbaar");
-    //    scoreBoard.SetActive(false);
+    //    scoreBoard.SetActive(scoreBoard.activeSelf);
     //}
 }
-
-
-//currLevel = GameObject.Instantiate(Levels[levelIndex])

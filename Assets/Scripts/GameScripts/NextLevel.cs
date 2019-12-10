@@ -5,26 +5,26 @@ using UnityEngine;
 public class NextLevel : MonoBehaviour
 {
     LevelManager LevelManager;
-    //ScoreWindow ScoreWindow;
+    ScoreWindow ScoreWindow;
     StrokeManager StrokeManager;
 
     void Start()
     {
+        ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
+        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
+        LevelManager = GameObject.FindObjectOfType<LevelManager>();
 
         NextHole();
     }
 
     void NextHole()
     {
-        LevelManager = GameObject.FindObjectOfType<LevelManager>();
+        Debug.Log("NEXT");
+
         LevelManager.LevelComplete();
 
-        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
         StrokeManager.ResetScore();
 
-        //ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
         //ScoreWindow.deActiveScoreboard();
-
-
     }
 }

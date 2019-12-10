@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ScoringCollider : MonoBehaviour
 {
-    //LevelManager LevelManager;
+    LevelManager LevelManager;
     Ball Ball;
-    //StrokeManager StrokeManager;
+    StrokeManager StrokeManager;
     ScoreWindow ScoreWindow;
 
     void Start()
     {
-        ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
+        //ScoreWindow = GameObject.FindObjectOfType<ScoreWindow>();
     }
 
     void Update()
@@ -23,13 +23,12 @@ public class ScoringCollider : MonoBehaviour
     {
         Debug.Log("BALL IN HOLE! NICE DONE!!!");
 
-        ScoreWindow.ActiveScoreboard();
+        //ScoreWindow.ActiveScoreboard();
 
         Ball = GameObject.FindObjectOfType<Ball>();
         Ball.gameObject.layer = LayerMask.NameToLayer("Default");
 
         Rigidbody BallRB = Ball.GetComponent<Rigidbody>();
-        //zet angularVelocity en velocity to 0
         BallRB.angularVelocity = Vector3.zero;
         BallRB.velocity = Vector3.zero;
 

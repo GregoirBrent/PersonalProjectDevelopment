@@ -16,6 +16,6 @@ public class StrokeCountUI : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		GetComponent<Text>().text = "Stroke: " + StrokeManager.StrokeCount;
+		GetComponent<Text>().text = "STROKE: " + StrokeManager.StrokeCount;
 	}
 }

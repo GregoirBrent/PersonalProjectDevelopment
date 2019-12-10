@@ -8,27 +8,69 @@ public class CameraFollow : MonoBehaviour
 
     public float turnSpeed = 4.0f;
    
-
 	private Vector3 CamereOffsetX;
     private Vector3 CamereOffsetY;
 
     public float height = 1f;
     public float distance = 2f;
 
+    StrokeManager StrokeManager;
+
     void Start()
     {
-
+        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
 
         CamereOffsetX = new Vector3(0, height, distance);
         CamereOffsetY = new Vector3(0, 0, distance);
     }
 
-    void LateUpdate()
+    float rotateX = 0;
+    float rotateY = 0;
+
+
+    void FixedUpdate()
     {
 
         CamereOffsetX = Quaternion.AngleAxis(Input.GetAxis("RoteerX") * turnSpeed, Vector3.up) * CamereOffsetX;
 
         CamereOffsetY = Quaternion.AngleAxis(Input.GetAxis("RoteerY") * turnSpeed, Vector3.right) * CamereOffsetY;
+
+        //string arduinoMessage = StrokeManager.ReadFromArduinoQueue();
+
+        //if (arduinoMessage == "4")
+        //{
+        //    Debug.Log("X up" + arduinoMessage);
+        //    rotateX += 1 * Time.deltaTime;
+        //}
+        //else if (arduinoMessage == "5")
+        //{
+        //    Debug.Log("X down" + arduinoMessage);
+        //    rotateX -= 1 * Time.deltaTime;
+        //}
+
+        //else
+        //{
+        //    rotateX = 0;
+        //}
+
+        //if (arduinoMessage == "6")
+        //{
+        //    Debug.Log("Y up" + arduinoMessage);
+        //    rotateY += 1 * Time.deltaTime;
+        //}
+        //else if (arduinoMessage == "7")
+        //{
+        //    Debug.Log("Y down" + arduinoMessage);
+        //    rotateY -= 1 * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    rotateY = 0;
+        //}
+
+        CamereOffsetX = Quaternion.AngleAxis(rotateX * turnSpeed, Vector3.up) * CamereOffsetX;
+
+        CamereOffsetY = Quaternion.AngleAxis(rotateY * turnSpeed, Vector3.right) * CamereOffsetY;
 
 
 

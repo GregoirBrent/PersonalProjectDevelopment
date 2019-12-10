@@ -2361,6 +2361,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1377445398167265983, guid: 6350b971671b44645852d81d194b2809,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1869815170400255227, guid: 6350b971671b44645852d81d194b2809,
         type: 3}
       propertyPath: scoreBoard
