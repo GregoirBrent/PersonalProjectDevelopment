@@ -77,21 +77,18 @@ public class ARStrokeManager : MonoBehaviour
 
         if (StrokeMode == StrokeModeEnum.AIMING)
         {
-            StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
+            //StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
 
 
             if (arRightIsPressed == true)
             {
                 StrokeAngle += 1 * 100f * Time.deltaTime;
-                //arRightIsPressed = false;
             }
 
             if (arLeftIsPressed == true)
             {
                 StrokeAngle -= 1 * 100f * Time.deltaTime;
-                //arLeftIsPressed = false;
             }
-
 
             if (arHitIsPressed == true)
             //if (Input.GetButtonUp("Fire1"))
