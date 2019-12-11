@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 //using System.IO.Ports;
-using System.Threading;
+//using System.Threading;
 using System;
 
 public class StrokeManager : MonoBehaviour
@@ -12,10 +12,10 @@ public class StrokeManager : MonoBehaviour
     //SerialPort stream = new SerialPort("/dev/cu.usbmodem14201", 9600);
 
     //private SerialPort stream;
-    private Thread thread;
-    //private Queue outputQueue;
-    private Queue inputQueue;
-    public bool looping = true;
+    //private Thread thread;
+    ////private Queue outputQueue;
+    //private Queue inputQueue;
+    //public bool looping = true;
 
 
     void Start()
@@ -134,44 +134,39 @@ public class StrokeManager : MonoBehaviour
         StrokeCount = 0;
     }
 
-    public string ReadFromArduinoQueue()
-    {
-        if (inputQueue.Count == 0)
-            return null;
+    //public string ReadFromArduinoQueue()
+    //{
+    //    if (inputQueue.Count == 0)
+    //        return null;
 
-        return (string)inputQueue.Dequeue();
-    }
+    //    return (string)inputQueue.Dequeue();
+    //}
 
     private void Update() //Gebruiken voor visuele frames/inputs
     {
-
-        string arduinoMessage = ReadFromArduinoQueue();
+        //string arduinoMessage = ReadFromArduinoQueue();
 
         if (StrokeMode == StrokeModeEnum.AIMING)
         {
             //StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
 
+            //if (arduinoMessage == "2")
+            //{
+            //    StrokeAngle += 2;
+            //}
 
-            if (arduinoMessage == "2")
-            {
-                //Debug.Log("joystick +1");
-                StrokeAngle += 1 * 100f * Time.deltaTime;
-            }
+            //if (arduinoMessage == "3")
+            //{
+            //    StrokeAngle -= 2;
+            //}
 
-            if (arduinoMessage == "3")
-            {
-                //Debug.Log("joystick -1");
-                StrokeAngle -= 1 * 100f * Time.deltaTime;
-            }
-
-
-            if (arduinoMessage == "1")
-            //if (Input.GetButtonUp("Fire1"))
-            {
-                Debug.Log("SET FORCE");
-                StrokeMode = StrokeModeEnum.FILLING;
-                return;
-            }
+            //if (arduinoMessage == "1")
+            ////if (Input.GetButtonUp("Fire1"))
+            //{
+            //    Debug.Log("SET FORCE");
+            //    StrokeMode = StrokeModeEnum.FILLING;
+            //    return;
+            //}
         }
 
         if (StrokeMode == StrokeModeEnum.FILLING)
@@ -190,12 +185,12 @@ public class StrokeManager : MonoBehaviour
             }
 
             //if (Input.GetButtonUp("Fire1"))
-            if (arduinoMessage == "1")
-            {
-                Debug.Log("BAL HIT");
-                Arrow.SetActive(false);
-                StrokeMode = StrokeModeEnum.DO_HIT;
-            }
+            //if (arduinoMessage == "1")
+            //{
+            //    Debug.Log("BAL HIT");
+            //    Arrow.SetActive(false);
+            //    StrokeMode = StrokeModeEnum.DO_HIT;
+            //}
         }
     }
 

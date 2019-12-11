@@ -21,7 +21,7 @@ public class CreateGameOnPlane : MonoBehaviour
     void Start()
     {
         sessionOrigin = GetComponent<ARRaycastManager>();
-        hits = new List<ARRaycastHit>();
+        //hits = new List<ARRaycastHit>();
 
         //gameModel.SetActive(false);
         canvasButtons.SetActive(false);
@@ -38,6 +38,8 @@ public class CreateGameOnPlane : MonoBehaviour
             return;
         }
 
+        hits = new List<ARRaycastHit>();
+
         var screenPoint = new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 4);
 
         if (sessionOrigin.Raycast(screenPoint, hits))
@@ -50,7 +52,7 @@ public class CreateGameOnPlane : MonoBehaviour
             arInstance.gameObject.SetActive(true);
             arInstance.transform.position = pose.position;
             arInstance.transform.up = pose.up;
-            canvasButtons.SetActive(true);
+            
         }
         else
         {

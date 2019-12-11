@@ -37,7 +37,7 @@ void loop()
     Serial.write(1);
     Serial.write(0);
     Serial.flush();
-    delay(1000);
+    delay(700);
   }
 
    if (digitalRead(leftButton) == HIGH)
@@ -61,21 +61,6 @@ void loop()
   //JOYSTICK
   xValue = analogRead(joystickX);
   yValue = analogRead(joystickY);
-
-  //Serial.println(xValue);
-  //Serial.println(yValue);
-
-  //if ((xValue >=100) && (xValue<= 900))  {
-    //Serial.write(8);
-    //Serial.flush();
-    //delay(1000);
-  //}
-
-  //if ((yValue >=100) && (yValue<= 900)) {
-    //Serial.write(9);
-    //Serial.flush();
-    //delay(1000);
-  //}
 
   if (xValue == 0) {
     Serial.write(4);

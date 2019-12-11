@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CameraFollow : MonoBehaviour
 {
-	public Transform Ball;
+    public Transform Ball;
 
     public float turnSpeed = 4.0f;
    
@@ -18,50 +19,48 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
-
         CamereOffsetX = new Vector3(0, height, distance);
         CamereOffsetY = new Vector3(0, 0, distance);
+
+        StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
     }
 
     float rotateX = 0;
     float rotateY = 0;
 
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
 
-        CamereOffsetX = Quaternion.AngleAxis(Input.GetAxis("RoteerX") * turnSpeed, Vector3.up) * CamereOffsetX;
+        //CamereOffsetX = Quaternion.AngleAxis(Input.GetAxis("RoteerX") * turnSpeed, Vector3.up) * CamereOffsetX;
+        //CamereOffsetY = Quaternion.AngleAxis(Input.GetAxis("RoteerY") * turnSpeed, Vector3.right) * CamereOffsetY;
 
-        CamereOffsetY = Quaternion.AngleAxis(Input.GetAxis("RoteerY") * turnSpeed, Vector3.right) * CamereOffsetY;
+        //string arduino = StrokeManager.ReadFromArduinoQueue();
 
-        //string arduinoMessage = StrokeManager.ReadFromArduinoQueue();
-
-        //if (arduinoMessage == "4")
+        //if (arduino == "4")
         //{
-        //    Debug.Log("X up" + arduinoMessage);
-        //    rotateX += 1 * Time.deltaTime;
+        //    Debug.Log("X up" + arduino);
+        //    rotateX += 3;
         //}
-        //else if (arduinoMessage == "5")
+        //else if (arduino == "5")
         //{
-        //    Debug.Log("X down" + arduinoMessage);
-        //    rotateX -= 1 * Time.deltaTime;
+        //    Debug.Log("X down" + arduino);
+        //    rotateX -= 3;
         //}
-
         //else
         //{
         //    rotateX = 0;
         //}
 
-        //if (arduinoMessage == "6")
+        //if (arduino == "6")
         //{
-        //    Debug.Log("Y up" + arduinoMessage);
-        //    rotateY += 1 * Time.deltaTime;
+        //    Debug.Log("Y up" + arduino);
+        //    rotateY += 1 /* Time.deltaTime*/;
         //}
-        //else if (arduinoMessage == "7")
+        //else if (arduino == "7")
         //{
-        //    Debug.Log("Y down" + arduinoMessage);
-        //    rotateY -= 1 * Time.deltaTime;
+        //    Debug.Log("Y down" + arduino);
+        //    rotateY -= 1 /* Time.deltaTime*/;
         //}
         //else
         //{
