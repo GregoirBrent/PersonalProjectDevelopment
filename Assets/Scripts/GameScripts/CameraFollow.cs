@@ -25,15 +25,15 @@ public class CameraFollow : MonoBehaviour
         StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
     }
 
-    float rotateX = 0;
-    float rotateY = 0;
+    //float rotateX = 0;
+    //float rotateY = 0;
 
 
     private void FixedUpdate()
     {
 
-        //CamereOffsetX = Quaternion.AngleAxis(Input.GetAxis("RoteerX") * turnSpeed, Vector3.up) * CamereOffsetX;
-        //CamereOffsetY = Quaternion.AngleAxis(Input.GetAxis("RoteerY") * turnSpeed, Vector3.right) * CamereOffsetY;
+        CamereOffsetX = Quaternion.AngleAxis(Input.GetAxis("RoteerX") * turnSpeed, Vector3.up) * CamereOffsetX;
+        CamereOffsetY = Quaternion.AngleAxis(Input.GetAxis("RoteerY") * turnSpeed, Vector3.right) * CamereOffsetY;
 
         //string arduino = StrokeManager.ReadFromArduinoQueue();
 
@@ -67,9 +67,9 @@ public class CameraFollow : MonoBehaviour
         //    rotateY = 0;
         //}
 
-        CamereOffsetX = Quaternion.AngleAxis(rotateX * turnSpeed, Vector3.up) * CamereOffsetX;
+        //CamereOffsetX = Quaternion.AngleAxis(rotateX * turnSpeed, Vector3.up) * CamereOffsetX;
 
-        CamereOffsetY = Quaternion.AngleAxis(rotateY * turnSpeed, Vector3.right) * CamereOffsetY;
+        //CamereOffsetY = Quaternion.AngleAxis(rotateY * turnSpeed, Vector3.right) * CamereOffsetY;
 
 
 

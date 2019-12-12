@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,15 +18,18 @@ public class StrokeManager : MonoBehaviour
     //private Queue inputQueue;
     //public bool looping = true;
 
+    
 
     void Start()
-    { 
+    {
+
         FindPlayerBall();
         StrokeCount = 0;
-        Arrow = GameObject.FindGameObjectWithTag("Arrow");
+        //Arrow = GameObject.FindGameObjectWithTag("Arrow");
 
         //StartThread();
     }
+
 
     //ARDUINO
     //public void StartThread() //creates and start thread
@@ -108,12 +112,13 @@ public class StrokeManager : MonoBehaviour
 
     Rigidbody playerBallRB;
 
-    public GameObject Arrow;
+    //private GameObject Arrow;
 
 
     private void FindPlayerBall()
 	{
-		GameObject go = GameObject.FindGameObjectWithTag("Player");
+
+        GameObject go = GameObject.FindGameObjectWithTag("Player");
 
         if (go == null)
         {
@@ -144,11 +149,12 @@ public class StrokeManager : MonoBehaviour
 
     private void Update() //Gebruiken voor visuele frames/inputs
     {
+
         //string arduinoMessage = ReadFromArduinoQueue();
 
         if (StrokeMode == StrokeModeEnum.AIMING)
         {
-            //StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
+            StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
 
             //if (arduinoMessage == "2")
             //{
@@ -161,12 +167,13 @@ public class StrokeManager : MonoBehaviour
             //}
 
             //if (arduinoMessage == "1")
-            ////if (Input.GetButtonUp("Fire1"))
-            //{
-            //    Debug.Log("SET FORCE");
-            //    StrokeMode = StrokeModeEnum.FILLING;
-            //    return;
-            //}
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                Debug.Log("SET FORCE");
+                StrokeMode = StrokeModeEnum.FILLING;
+                return;
+            }
         }
 
         if (StrokeMode == StrokeModeEnum.FILLING)
@@ -184,14 +191,16 @@ public class StrokeManager : MonoBehaviour
                 fillDir = 1;
             }
 
-            //if (Input.GetButtonUp("Fire1"))
+            if (Input.GetButtonUp("Fire1"))
             //if (arduinoMessage == "1")
-            //{
-            //    Debug.Log("BAL HIT");
-            //    Arrow.SetActive(false);
-            //    StrokeMode = StrokeModeEnum.DO_HIT;
-            //}
+            {
+                Debug.Log("BAL HIT");
+                //Arrow.SetActive(false);
+                StrokeMode = StrokeModeEnum.DO_HIT;
+            }
         }
+        
+  
     }
 
     void CheckRollingStatus()
@@ -199,7 +208,7 @@ public class StrokeManager : MonoBehaviour
         //is de bal nog aan het rollen?
         if (playerBallRB.IsSleeping())
         {
-            Arrow.SetActive(true);
+            //Arrow.SetActive(true);
             StrokeMode = StrokeModeEnum.AIMING;
         }
 
@@ -209,6 +218,7 @@ public class StrokeManager : MonoBehaviour
 
     private void FixedUpdate() //Run over elke tik in de physics
     {
+       
         if (playerBallRB == null)
         {
             //De bal is out of bounce of gedelete of nog niet gerespawned
@@ -235,5 +245,6 @@ public class StrokeManager : MonoBehaviour
         fillDir = 1;
         StrokeCount++;
         StrokeMode = StrokeModeEnum.BALL_IS_ROLLING;
+
     }
 }

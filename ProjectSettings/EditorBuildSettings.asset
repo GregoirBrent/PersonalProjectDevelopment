@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ChooseYourGameScene.unity
     guid: bbeb7c3fd6d714d789bf75a2be4cde1c
-  - enabled: 0
-    path: Assets/Scenes/GameScene.unity
-    guid: 343565ef57a4a41d3a8e6d603f300b77
   - enabled: 1
-    path: Assets/Scenes/ARGameScene.unity
-    guid: c64f703d2f933448e80f6a6054b2b321
+    path: Assets/Scenes/MULTIPLAYER/MultiplayerGame/CustomMatchMaking.unity
+    guid: 6014f747912594a2e9b2571a4d265b33
+  - enabled: 1
+    path: Assets/Scripts/MultiplayerScripts/MultiplayerGame/MultiplayerScene.unity
+    guid: 1961e99a7be994708aea0e149dbc44b4
   m_configObjects: {}

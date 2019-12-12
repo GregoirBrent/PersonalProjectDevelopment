@@ -1,15 +1,23 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ARStrokeManager : MonoBehaviour
 {
 
+    private PhotonView PV;
+
     void Start()
     {
-        FindPlayerBall();
-        StrokeCount = 0;
+        PV = GetComponent<PhotonView>();
         Arrow = GameObject.FindGameObjectWithTag("Arrow");
+
+        if (PV.IsMine)
+        {
+            FindPlayerBall();
+            StrokeCount = 0;
+        }
     }
 
     public float StrokeAngle { get; protected set; }
@@ -120,8 +128,8 @@ public class ARStrokeManager : MonoBehaviour
             {
                 Debug.Log("BAL HIT");
                 Arrow.SetActive(false);
-                StrokeMode = StrokeModeEnum.DO_HIT;
                 arHitIsPressed = false;
+                StrokeMode = StrokeModeEnum.DO_HIT;
             }
         }
     }

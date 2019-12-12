@@ -8,7 +8,7 @@ public class Respawn : MonoBehaviour
     [SerializeField]private Transform Ball;
 
     SpawnPoint SpawnPoint;
-    float yOffset = -5;
+    //float yOffset = -5;
 
     void Start()
     {
@@ -18,17 +18,17 @@ public class Respawn : MonoBehaviour
     void Update()
     {
 
-        if (Ball.position.y < yOffset )
-        {
-            Rigidbody BallRB = Ball.GetComponent<Rigidbody>();
+        //if (Ball.position.y < yOffset )
+        //{
+        //    Rigidbody BallRB = Ball.GetComponent<Rigidbody>();
 
-            //zet angularVelocity en velocity to 0
-            BallRB.angularVelocity = Vector3.zero;
-            BallRB.velocity = Vector3.zero;
+        //    //zet angularVelocity en velocity to 0
+        //    BallRB.angularVelocity = Vector3.zero;
+        //    BallRB.velocity = Vector3.zero;
 
-            SpawnPoint = GameObject.FindObjectOfType<SpawnPoint>();
-            SpawnPoint.Spawn();
-        }
+        //    SpawnPoint = GameObject.FindObjectOfType<SpawnPoint>();
+        //    SpawnPoint.Spawn();
+        //}
     }
 
     private void OnTriggerEnter(Collider other)

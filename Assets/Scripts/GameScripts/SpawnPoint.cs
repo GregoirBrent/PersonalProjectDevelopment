@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SpawnPoint : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class SpawnPoint : MonoBehaviour
     public Transform spawnPoint;
     Ball Ball;
 
-
+    //private PhotonView PV;
 
     //void Awake()
     //{
@@ -20,13 +21,17 @@ public class SpawnPoint : MonoBehaviour
 
     void Start()
     {
+        //PV = GetComponent<PhotonView>();
         Spawn();
+
     }
 
     public void Spawn()
     {
+        
         Ball = GameObject.FindObjectOfType<Ball>();
         Ball.transform.position = spawnPoint.transform.position;
+        
     }
 
 }
