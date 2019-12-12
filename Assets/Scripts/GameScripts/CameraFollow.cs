@@ -17,12 +17,15 @@ public class CameraFollow : MonoBehaviour
 
     StrokeManager StrokeManager;
 
+ 
+
     void Start()
     {
         CamereOffsetX = new Vector3(0, height, distance);
         CamereOffsetY = new Vector3(0, 0, distance);
 
         StrokeManager = GameObject.FindObjectOfType<StrokeManager>();
+        
     }
 
     //float rotateX = 0;

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 //using System.Threading;
 using System;
 
-public class StrokeManager : MonoBehaviour
+public class StrokeBallManager : MonoBehaviour
 {
 
     //SerialPort stream = new SerialPort("/dev/cu.usbmodem14201", 9600);
@@ -119,7 +119,7 @@ public class StrokeManager : MonoBehaviour
     float MaxStrokeForce = 10f;
 
     public enum StrokeModeEnum { AIMING, FILLING, DO_HIT, BALL_IS_ROLLING };
-    public  StrokeModeEnum StrokeMode { get; protected set; }
+    public StrokeModeEnum StrokeMode { get; protected set; }
 
     public float StrokeForcePerc { get { return StrokeForce / MaxStrokeForce; } }
 
@@ -167,56 +167,56 @@ public class StrokeManager : MonoBehaviour
     private void Update() //Gebruiken voor visuele frames/inputs
     {
 
-        
-            //string arduinoMessage = ReadFromArduinoQueue();
 
-            if (StrokeMode == StrokeModeEnum.AIMING)
+        //string arduinoMessage = ReadFromArduinoQueue();
+
+        if (StrokeMode == StrokeModeEnum.AIMING)
+        {
+            StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
+
+            //if (arduinoMessage == "2")
+            //{
+            //    StrokeAngle += 2;
+            //}
+
+            //if (arduinoMessage == "3")
+            //{
+            //    StrokeAngle -= 2;
+            //}
+
+            //if (arduinoMessage == "1")
+            if (Input.GetButtonUp("Fire1"))
             {
-                StrokeAngle += Input.GetAxis("Horizontal") * 100f * Time.deltaTime;
+                Debug.Log("SET FORCE");
+                StrokeMode = StrokeModeEnum.FILLING;
+                return;
+            }
+        }
 
-                //if (arduinoMessage == "2")
-                //{
-                //    StrokeAngle += 2;
-                //}
+        if (StrokeMode == StrokeModeEnum.FILLING)
+        {
+            StrokeForce += (strokeForceFillSpeed * fillDir) * Time.deltaTime;
 
-                //if (arduinoMessage == "3")
-                //{
-                //    StrokeAngle -= 2;
-                //}
-
-                //if (arduinoMessage == "1")
-                if (Input.GetButtonUp("Fire1"))
-                {
-                    Debug.Log("SET FORCE");
-                    StrokeMode = StrokeModeEnum.FILLING;
-                    return;
-                }
+            if (StrokeForce > MaxStrokeForce)
+            {
+                StrokeForce = MaxStrokeForce;
+                fillDir = -1;
+            }
+            else if (StrokeForce < 0)
+            {
+                StrokeForce = 0;
+                fillDir = 1;
             }
 
-            if (StrokeMode == StrokeModeEnum.FILLING)
+            if (Input.GetButtonUp("Fire1"))
+            //if (arduinoMessage == "1")
             {
-                StrokeForce += (strokeForceFillSpeed * fillDir) * Time.deltaTime;
-
-                if (StrokeForce > MaxStrokeForce)
-                {
-                    StrokeForce = MaxStrokeForce;
-                    fillDir = -1;
-                }
-                else if (StrokeForce < 0)
-                {
-                    StrokeForce = 0;
-                    fillDir = 1;
-                }
-
-                if (Input.GetButtonUp("Fire1"))
-                //if (arduinoMessage == "1")
-                {
-                    Debug.Log("BAL HIT");
-                    //Arrow.SetActive(false);
-                    StrokeMode = StrokeModeEnum.DO_HIT;
-                }
+                Debug.Log("BAL HIT");
+                //Arrow.SetActive(false);
+                StrokeMode = StrokeModeEnum.DO_HIT;
             }
-       
+        }
+
     }
 
     void CheckRollingStatus()

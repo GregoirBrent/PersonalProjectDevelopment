@@ -898,6 +898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 8246042925506980083}
+  Ball: {fileID: 824720143734351664, guid: 2bb769d3bb66e43119569d1a3f48284b, type: 3}
 --- !u!65 &5227056547752234285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -978,16 +979,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 867428993665651203, guid: 487b97331f9874cd29b8a16254f2230f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: aabadc1bb4cf54188ba6d3e0767a28c1, type: 2}
     - target: {fileID: -5812814926498980104, guid: 487b97331f9874cd29b8a16254f2230f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 78884291565cb4b639f7efa402d17e1f, type: 2}
+    - target: {fileID: 867428993665651203, guid: 487b97331f9874cd29b8a16254f2230f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aabadc1bb4cf54188ba6d3e0767a28c1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 487b97331f9874cd29b8a16254f2230f, type: 3}
 --- !u!4 &2618143391164032287 stripped

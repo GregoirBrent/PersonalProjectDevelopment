@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameSetupController : MonoBehaviour
 {
 
-    SpawnPoint SpawnPoint;
+    SpawnPoint SpawnPoint; 
 
     void Start()
     {
@@ -15,7 +15,7 @@ public class GameSetupController : MonoBehaviour
     }
 
     
-    private void CreatePlayer()
+    public void CreatePlayer()
     {
         Debug.Log("Creating Player");
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Ball"), SpawnPoint.transform.position, Quaternion.identity);

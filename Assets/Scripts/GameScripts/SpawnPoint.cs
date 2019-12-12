@@ -7,7 +7,7 @@ public class SpawnPoint : MonoBehaviour
 {
 
     public Transform spawnPoint;
-    Ball Ball;
+    public Ball Ball;
 
     //private PhotonView PV;
 
@@ -22,7 +22,7 @@ public class SpawnPoint : MonoBehaviour
     void Start()
     {
         //PV = GetComponent<PhotonView>();
-        Spawn();
+        //Spawn();
 
     }
 

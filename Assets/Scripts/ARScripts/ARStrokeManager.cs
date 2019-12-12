@@ -6,18 +6,14 @@ using UnityEngine;
 public class ARStrokeManager : MonoBehaviour
 {
 
-    private PhotonView PV;
-
     void Start()
     {
-        PV = GetComponent<PhotonView>();
+       
         Arrow = GameObject.FindGameObjectWithTag("Arrow");
 
-        if (PV.IsMine)
-        {
             FindPlayerBall();
             StrokeCount = 0;
-        }
+
     }
 
     public float StrokeAngle { get; protected set; }

@@ -161,6 +161,11 @@ namespace Photon.Pun
             }
         }
 
+        public void RPC(string v, object all, byte shotgun)
+        {
+            throw new NotImplementedException();
+        }
+
         [FormerlySerializedAs("instantiationId")]
         public int InstantiationId; // if the view was instantiated with a GO, this GO has a instantiationID (first view's viewID)
 
